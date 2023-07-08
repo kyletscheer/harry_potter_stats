@@ -68,7 +68,9 @@
     }
     function hideFilterDropdown() {
       var dropdown = document.getElementById('filterDropdown');
-      dropdown.style.display = dropdown.style.display === 'inline-block' ? 'none' : 'inline-block';
+      if (dropdown.style.display === 'inline-block') {
+    dropdown.style.display = 'none';
+  }
     }
     window.addEventListener('DOMContentLoaded', (event) => {
       document.getElementById("all").addEventListener('click', function () {
