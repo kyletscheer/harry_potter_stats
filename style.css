@@ -1,0 +1,64 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+main {
+    flex: 1 0 auto;
+}
+.nav-link {
+    transition: color 0.2s ease-in-out;
+}
+.dropdown-item {
+    padding: 0.5rem 1.5rem;
+}
+/* Dark mode specific styles */
+[data-bs-theme="dark"] {
+    --bs-body-bg: #212529;
+    --bs-body-color: #dee2e6;
+}
+[data-bs-theme="dark"] .navbar,
+[data-bs-theme="dark"] footer {
+    background-color: #2b3035 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+[data-bs-theme="dark"] .navbar-light .navbar-toggler-icon {
+    filter: invert(1);
+}
+/* Theme toggle styles */
+.theme-toggle {
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    margin-left: 0.5rem;
+}
+.theme-toggle:hover {
+    background-color: rgba(var(--bs-secondary-rgb), 0.1);
+}
+/* Navbar actions container */
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+/* Footer link styles */
+footer a {
+    color: var(--bs-primary);
+    transition: color 0.2s ease-in-out;
+}
+footer a:hover {
+    color: var(--bs-primary-darker, #0a58ca);
+}
+[data-bs-theme="dark"] footer a {
+    color: #6ea8fe;
+}
+[data-bs-theme="dark"] footer a:hover {
+    color: #8bb9fe;
+}
