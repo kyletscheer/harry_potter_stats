@@ -1,120 +1,550 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harry Potter Book Statistics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="light">
+    <!-- Navigation -->
+    <nav
+      class="sticky top-0 z-50 backdrop-blur-md bg-opacity-90 border-b-2"
+      style="
+        background: rgba(116, 0, 1, 0.95);
+        border-color: var(--gryffindor-gold);
+      "
+    >
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex items-center justify-between">
+          <a href="#home" class="hp-font text-3xl text-yellow-400"
+            >⚡ Harry Potter Stats</a
+          >
+          <div class="flex items-center gap-6">
+            <a href="#home" class="nav-link text-white hover:text-yellow-300"
+              >Home</a
+            >
+            <a href="#stats" class="nav-link text-white hover:text-yellow-300"
+              >Statistics</a
+            >
+            <a href="#random" class="nav-link text-white hover:text-yellow-300"
+              >Random Chapter</a
+            >
+            <button
+              onclick="toggleTheme()"
+              class="theme-toggle text-yellow-400"
+            >
+              <span id="themeIcon">🌙</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
 
-<head>
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-XCWC56H0L1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
+    <!-- Hero Section -->
+    <section id="home" class="py-20 fade-in">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="hp-font text-6xl mb-6" style="color: var(--gryffindor-gold)">
+          The Magical World of Statistics
+        </h1>
+        <p class="text-xl mb-8 elegant-font">
+          Discover the where and how long of the Harry Potter Books
+        </p>
 
-		gtag('config', 'G-XCWC56H0L1');
-	</script>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
+        <!-- Quick Stats -->
+        <div class="grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          <div class="magic-card p-6 rounded-lg card-dark card-light">
+            <div class="stat-number">7</div>
+            <p class="elegant-font">Books Analyzed</p>
+          </div>
+          <div class="magic-card p-6 rounded-lg card-dark card-light">
+            <div class="stat-number">200</div>
+            <p class="elegant-font">Chapters</p>
+          </div>
+          <div class="magic-card p-6 rounded-lg card-dark card-light">
+            <div class="stat-number">6,575</div>
+            <p class="elegant-font">Total Pages</p>
+          </div>
+          <div class="magic-card p-6 rounded-lg card-dark card-light">
+            <div class="stat-number">12</div>
+            <p class="elegant-font">Categories Tracked</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-	<title>Harry Potter Stuff</title>
-	<!-- Bootstrap CSS -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Bootstrap Icons -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css"
-		rel="stylesheet">
-	<link href="style.css" rel="stylesheet">
+    <!-- Statistics Section -->
+    <section id="stats" class="py-20">
+      <div class="container mx-auto px-4">
+        <h2
+          class="hp-font text-5xl text-center mb-12"
+          style="color: var(--gryffindor-gold)"
+        >
+          📊 Book Statistics
+        </h2>
 
-</head>
+        <!-- Top Categories Summary -->
+        <div class="mb-12">
+          <h3 class="elegant-font text-3xl mb-6 text-center">
+            Top Categories Across the Series
+          </h3>
+          <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div
+              class="magic-card p-6 rounded-lg card-dark card-light text-center"
+            >
+              <div class="text-5xl mb-2">⚔️</div>
+              <div class="stat-number text-3xl">17.6%</div>
+              <p class="elegant-font font-semibold">Climax Day</p>
+              <p class="text-sm opacity-75">The final battle in each book</p>
+            </div>
+            <div
+              class="magic-card p-6 rounded-lg card-dark card-light text-center"
+            >
+              <div class="text-5xl mb-2">🏠</div>
+              <div class="stat-number text-3xl">6.2%</div>
+              <p class="elegant-font font-semibold">The Dursleys</p>
+              <p class="text-sm opacity-75">Harry's muggle family</p>
+            </div>
+            <div
+              class="magic-card p-6 rounded-lg card-dark card-light text-center"
+            >
+              <div class="text-5xl mb-2">🧙</div>
+              <div class="stat-number text-3xl">5.5%</div>
+              <p class="elegant-font font-semibold">Dumbledore's Office</p>
+              <p class="text-sm opacity-75">Including Pensieve memories</p>
+            </div>
+          </div>
+        </div>
 
-<body>
-	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
-		<div class="container">
-			<a class="navbar-brand fw-bold" href="index.html">Harry Potter Stuff</a>
-			<!-- Navbar actions container for mobile -->
-			<div class="navbar-actions">
-				<!-- Theme toggle moved outside collapse -->
-				<div class="theme-toggle" id="themeToggle" role="button" aria-label="Toggle theme">
-					<i class="bi bi-sun-fill"></i>
-				</div>
+        <!-- Chart Controls -->
+        <div class="mb-8 text-center">
+          <h3 class="elegant-font text-2xl mb-4">Select View</h3>
+          <div class="inline-flex gap-4">
+            <button
+              onclick="switchChart('book')"
+              id="bookBtn"
+              class="filter-btn active px-6 py-3 rounded-lg font-semibold"
+              style="background: var(--gryffindor-red); color: white"
+            >
+              Percent of Each Book
+            </button>
+            <button
+              onclick="switchChart('series')"
+              id="seriesBtn"
+              class="filter-btn px-6 py-3 rounded-lg font-semibold"
+              style="background: var(--ravenclaw-blue); color: white"
+            >
+              Percent of Series
+            </button>
+          </div>
+        </div>
 
-				<button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-					data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-			</div>
-			<div class="collapse navbar-collapse" id="navbarContent">
-				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-					<li class="nav-item">
-						<a class="nav-link" href="index.html">Home</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="random.html">Random Chapter Generator</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="charts.html">Statistics Breakdown</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!-- Main Content -->
-	<main class="py-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<h1 class="mt-5">This is a random collection of tools and fun stats related to the Harry Potter book
-						series.</h1>
-				</div>
-			</div><br><br><br>
-			<div class="row">
-				<div class="col-lg-6 text-center">
-					<div class="card" style="width: 18rem;">
-						<div class="card-body">
-							<h5 class="card-title">Book Percent Stats</h5>
-							<p class="card-text">I've gone through the Harry Potter books to see how what percent takes
-								place in a certain place, doing a certain activity, etc... You can see those stats
-								below.
-							</p>
-							<a href="charts.html" class="btn btn-primary">See the Stats</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6 text-center">
-					<div class="card" style="width: 18rem;">
-						<div class="card-body">
-							<h5 class="card-title">Random Chapter Generator</h5>
-							<p class="card-text">Get a random chapter from the Harry Potter books. Filter by which books
-								you
-								want.</p>
-							<a href="random.html" class="btn btn-primary">Get a Chapter</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</main>
-		<!-- Footer -->
-		<footer class="bg-white border-top py-4 mt-auto">
-			<div class="container">
-				<div class="d-flex justify-content-between align-items-center">
-					<div>
-						Made by <a href="https://www.kylescheer.com" target="_blank">Kyle Scheer</a>
-					</div>
-					<a href="https://github.com/kyletscheer/harry_potter_stats" target="_blank">View Code</a>
-				</div>
-			</div>
-		</footer>
-		<!-- Bootstrap Bundle with Popper -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-		<script src="darkmode.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-			crossorigin="anonymous"></script>
+        <!-- Category Filter -->
+        <div class="mb-8">
+          <h3 class="elegant-font text-2xl mb-4 text-center">
+            Filter Categories
+          </h3>
+          <div class="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto">
+            <button
+              onclick="toggleCategory('Climax Day')"
+              class="category-filter filter-btn px-4 py-2 rounded-full text-sm font-semibold"
+              style="background: var(--gryffindor-gold); color: black"
+            >
+              ⚔️ Climax Day
+            </button>
+            <button
+              onclick="toggleCategory('Diagon Alley')"
+              class="category-filter filter-btn px-4 py-2 rounded-full text-sm font-semibold"
+              style="background: var(--ravenclaw-bronze); color: white"
+            >
+              🏪 Diagon Alley
+            </button>
+            <button
+              onclick="toggleCategory('Dumbledores Office')"
+              class="category-filter filter-btn px-4 py-2 rounded-full text-sm font-semibold"
+              style="background: var(--ravenclaw-blue); color: white"
+            >
+              🧙 Dumbledore's Office
+            </button>
+            <button
+              onclick="toggleCategory('Dursleys')"
+              class="category-filter filter-btn px-4 py-2 rounded-full text-sm font-semibold"
+              style="background: var(--slytherin-silver); color: white"
+            >
+              🏠 Dursleys
+            </button>
+            <button
+              onclick="toggleCategory('Forbidden Forest')"
+              class="category-filter filter-btn px-4 py-2 rounded-full text-sm font-semibold"
+              style="background: var(--slytherin-green); color: white"
+            >
+              🌲 Forbidden Forest
+            </button>
+            <button
+              onclick="toggleCategory('Grimmauld Place')"
+              class="category-filter filter-btn px-4 py-2 rounded-full text-sm font-semibold"
+              style="background: var(--slytherin-green); color: white"
+            >
+              🏚️ Grimmauld Place
+            </button>
+            <button
+              onclick="toggleCategory('Hogsmeade')"
+              class="category-filter filter-btn px-4 py-2 rounded-full text-sm font-semibold"
+              style="background: var(--hufflepuff-yellow); color: black"
+            >
+              🏘️ Hogsmeade
+            </button>
+            <button
+              onclick="toggleCategory('Hogwarts Express')"
+              class="category-filter filter-btn px-4 py-2 rounded-full text-sm font-semibold"
+              style="background: var(--gryffindor-red); color: white"
+            >
+              🚂 Hogwarts Express
+            </button>
+            <button
+              onclick="toggleCategory('Memories')"
+              class="category-filter filter-btn px-4 py-2 rounded-full text-sm font-semibold"
+              style="background: var(--ravenclaw-blue); color: white"
+            >
+              💭 Memories
+            </button>
+            <button
+              onclick="toggleCategory('Ministry of Magic')"
+              class="category-filter filter-btn px-4 py-2 rounded-full text-sm font-semibold"
+              style="background: var(--slytherin-silver); color: white"
+            >
+              🏛️ Ministry of Magic
+            </button>
+            <button
+              onclick="toggleCategory('Quidditch')"
+              class="category-filter filter-btn px-4 py-2 rounded-full text-sm font-semibold"
+              style="background: var(--gryffindor-gold); color: black"
+            >
+              🏆 Quidditch
+            </button>
+            <button
+              onclick="toggleCategory('The Burrow')"
+              class="category-filter filter-btn px-4 py-2 rounded-full text-sm font-semibold"
+              style="background: var(--hufflepuff-yellow); color: black"
+            >
+              🏡 The Burrow
+            </button>
+          </div>
+        </div>
+        <div class="mb-8 text-center">
+          <i>Chart not viewable in mobile portrait mode.</i>
+        </div>
+        <!-- Chart -->
+        <div
+          class="magic-card p-8 rounded-lg card-dark card-light max-w-6xl mx-auto chart-wrapper"
+        >
+          <canvas id="mainChart"></canvas>
+        </div>
 
+        <!-- Data Table -->
+        <div class="mt-12">
+          <h3 class="elegant-font text-3xl mb-6 text-center">
+            Detailed Breakdown
+          </h3>
+          <div class="magic-card rounded-lg card-dark card-light">
+            <div class="overflow-x-auto">
+              <table class="w-full sortable" id="dataTable">
+                <thead
+                  class="text-white"
+                  style="background: var(--gryffindor-red)"
+                >
+                  <tr id="tableHeader"></tr>
+                </thead>
+                <tbody
+                  id="tableBody"
+                  class="divide-y divide-opacity-20"
+                ></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
 
-</body>
+        <!-- Methodology -->
+        <div class="mt-16 max-w-4xl mx-auto">
+          <h3
+            class="hp-font text-4xl mb-8 text-center"
+            style="color: var(--gryffindor-gold)"
+          >
+            📜 Methodology
+          </h3>
+          <div class="magic-card p-8 rounded-lg card-dark card-light">
+            <h4 class="elegant-font text-2xl mb-4">
+              How the Statistics Were Calculated
+            </h4>
+            <p class="mb-4">
+              For each section in the books, I tracked the start page (S) and
+              end page (E), along with the total page count.
+            </p>
+            <div
+              class="my-6 p-6 rounded-lg"
+              style="
+                background: rgba(211, 166, 37, 0.1);
+                border-left: 4px solid var(--gryffindor-gold);
+              "
+            >
+              <p class="font-mono mb-2">
+                <strong>Percent of Book:</strong> (E - S) / Total Book Pages
+              </p>
+              <p class="font-mono">
+                <strong>Percent of Series:</strong> (E - S) / 6,575 total pages
+              </p>
+            </div>
+            <p class="mb-4">
+              <strong>Example:</strong> In Prisoner of Azkaban (637 pages),
+              Quidditch appears on pages 256-262, 381-386, and 450-460. A total
+              of 21 pages, 21/637 totals 3.3% of that book.
+            </p>
+            <p class="text-sm opacity-75 italic">
+              All calculations were performed manually by analyzing each book
+              page-by-page.
+            </p>
+          </div>
+          <br />
+          <!-- Category Explanation -->
+          <div class="p-8 rounded-lg card-dark card-light">
+            <h3 class="elegant-font text-3xl mb-4">Category Explanation</h3>
+            <table
+              class="w-full table-auto border-collapse text-left category-table"
+            >
+              <thead>
+                <tr>
+                  <th class="px-4 py-2 border border-gray-400">Category</th>
+                  <th class="px-4 py-2 border border-gray-400">Explanation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="px-4 py-2 border border-gray-400">Climax Day</td>
+                  <td class="px-4 py-2 border border-gray-400">
+                    How much of each Harry Potter book is
+                    dedicated to the "climax day", starting at the beginning of
+                    the day and going until Harry falls asleep, or the book
+                    skips to the next day. Includes Prisoner of Azkaban time
+                    travel. <a style="text-decoration: underline;" href="climaxdayquotes.jpg" target="_blank"
+                      >(See quotes)</a>.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2 border border-gray-400">Diagon Alley</td>
+                  <td class="px-4 py-2 border border-gray-400">
+                    When Harry arrives and leaves Diagon Alley.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2 border border-gray-400">
+                    Dumbledore's Office
+                  </td>
+                  <td class="px-4 py-2 border border-gray-400">
+                    When Harry arrives and leaves Dumbledore's office. Includes
+                    Pensieve time.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2 border border-gray-400">Dursleys</td>
+                  <td class="px-4 py-2 border border-gray-400">
+                    Harry's time with the Dursleys, starting in Sorcerer's
+                    Stone.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2 border border-gray-400">
+                    Forbidden Forest
+                  </td>
+                  <td class="px-4 py-2 border border-gray-400">
+                    Starting and ending when Harry goes past the trees.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2 border border-gray-400">
+                    Grimmauld Place
+                  </td>
+                  <td class="px-4 py-2 border border-gray-400">
+                    When Harry arrives and leaves Grimmauld Place.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2 border border-gray-400">Hogsmeade</td>
+                  <td class="px-4 py-2 border border-gray-400">
+                    Starting and ending when Harry leaves or comes back from
+                    Hogsmeade, including secret tunnels.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2 border border-gray-400">
+                    Hogwarts Express
+                  </td>
+                  <td class="px-4 py-2 border border-gray-400">
+                    Getting onto the train and leaving it.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2 border border-gray-400">Memories</td>
+                  <td class="px-4 py-2 border border-gray-400">
+                    All Pensieve pages, including flashbacks from Tom Riddle and
+                    Voldemort.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2 border border-gray-400">
+                    The Ministry of Magic
+                  </td>
+                  <td class="px-4 py-2 border border-gray-400">
+                    Entering and leaving the Ministry, including the red
+                    telephone box.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2 border border-gray-400">Quidditch</td>
+                  <td class="px-4 py-2 border border-gray-400">
+                    Starting whistle to snitch catch, summing all games played.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2 border border-gray-400">The Burrow</td>
+                  <td class="px-4 py-2 border border-gray-400">
+                    When Harry arrives and leaves the Burrow.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- Random Chapter Generator -->
+    <section id="random" class="py-20">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <h2
+          class="hp-font text-5xl text-center mb-12"
+          style="color: var(--gryffindor-gold)"
+        >
+          🎲 Random Chapter Generator
+        </h2>
+
+        <div class="p-8 rounded-lg card-dark card-light">
+          <div class="mb-6">
+            <button
+              onclick="toggleFilters()"
+              class="w-full md:w-auto px-6 py-3 rounded-lg font-semibold elegant-font"
+              style="background: var(--ravenclaw-blue); color: white"
+            >
+              🔍 Filter Books
+            </button>
+          </div>
+
+          <div
+            id="filterPanel"
+            class="hidden mb-6 p-6 rounded-lg"
+            style="background: rgba(211, 166, 37, 0.1)"
+          >
+            <div class="space-y-3">
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  id="allBooks"
+                  class="w-5 h-5"
+                  onchange="toggleAllBooks()"
+                />
+                <span class="elegant-font font-semibold">All Books</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" class="book-filter w-5 h-5" value="1" />
+                <span>Harry Potter and the Sorcerer's Stone</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" class="book-filter w-5 h-5" value="2" />
+                <span>Harry Potter and the Chamber of Secrets</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" class="book-filter w-5 h-5" value="3" />
+                <span>Harry Potter and the Prisoner of Azkaban</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" class="book-filter w-5 h-5" value="4" />
+                <span>Harry Potter and the Goblet of Fire</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" class="book-filter w-5 h-5" value="5" />
+                <span>Harry Potter and the Order of the Phoenix</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" class="book-filter w-5 h-5" value="6" />
+                <span>Harry Potter and the Half-Blood Prince</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" class="book-filter w-5 h-5" value="7" />
+                <span>Harry Potter and the Deathly Hallows</span>
+              </label>
+            </div>
+          </div>
+
+          <button
+            onclick="generateChapter()"
+            class="w-full py-4 rounded-lg font-bold text-xl elegant-font hover:opacity-90 transition-all"
+            style="background: var(--gryffindor-gold); color: black"
+          >
+            ✨ Generate Random Chapter
+          </button>
+
+          <div id="chapterResult" class="mt-8"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="py-8 mt-20 border-t-2"
+      style="
+        background: rgba(116, 0, 1, 0.95);
+        border-color: var(--gryffindor-gold);
+      "
+    >
+      <div class="container mx-auto px-4 text-center text-white">
+        <p class="elegant-font">
+          Made with 🪄 by
+          <a
+            href="https://www.kylescheer.com"
+            target="_blank"
+            class="text-yellow-400 hover:text-yellow-300"
+            >Kyle Scheer</a
+          >
+        </p>
+        <br />
+        <p style="text-align: center">
+          <a
+            href="https://ko-fi.com/scheerapps"
+            target="_blank"
+            rel="noopener"
+            title="Support me on Ko-fi"
+          >
+            <img
+              height="36"
+              style="display: inherit; border: 0px; height: 36px"
+              src="https://storage.ko-fi.com/cdn/kofi5.png?v=6"
+              border="0"
+              alt="Buy Me a Coffee at ko-fi.com"
+            />
+          </a>
+        </p>
+        <br />
+        <p class="text-sm mt-2 opacity-75">
+          All Harry Potter content © J.K. Rowling
+        </p>
+      </div>
+    </footer>
+<script src="chapterarray.js"> </script>
+<script src="script.js"> </script>
+  </body>
 </html>

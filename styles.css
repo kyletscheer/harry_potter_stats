@@ -1,0 +1,231 @@
+@font-face {
+  font-family: "Harry Potter";
+  src: url("HARRYP.TTF") format("truetype");
+}
+
+:root {
+  --gryffindor-red: #740001;
+  --gryffindor-gold: #d3a625;
+  --slytherin-green: #1a472a;
+  --slytherin-silver: #5d5d5d;
+  --ravenclaw-blue: #0e1a40;
+  --ravenclaw-bronze: #946b2d;
+  --hufflepuff-yellow: #ecb939;
+  --hufflepuff-black: #000000;
+  --parchment: #f4e8d0;
+  --dark-parchment: #2a2520;
+}
+
+body {
+  font-family: "Lora", serif;
+  transition: all 0.3s ease;
+}
+
+body.dark {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #f4e8d0;
+}
+
+body.light {
+  background: linear-gradient(135deg, #f4e8d0 0%, #e8dcc4 100%);
+  color: #2a2520;
+}
+
+.hp-font {
+  font-family: "Harry Potter", "Cinzel", serif;
+  letter-spacing: 2px;
+}
+
+.elegant-font {
+  font-family: "Cinzel", serif;
+}
+
+.magic-card {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.magic-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.magic-card:hover::before {
+  opacity: 1;
+}
+
+.magic-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gryffindor-gold);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 80%;
+}
+
+.theme-toggle {
+  cursor: pointer;
+  font-size: 24px;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: rotate(20deg);
+}
+
+.dark .card-dark {
+  background: rgba(26, 37, 47, 0.8);
+  border: 1px solid rgba(211, 166, 37, 0.3);
+}
+
+.light .card-light {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(116, 0, 1, 0.2);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: linear-gradient(
+    135deg,
+    var(--gryffindor-gold),
+    var(--ravenclaw-bronze)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.filter-btn {
+  transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  filter: brightness(1.15);
+  border: solid 2px var(--gryffindor-gold);
+}
+
+.chapter-result {
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+#dataTable {
+  width: 100%;
+  min-width: max-content;
+  table-layout: auto;
+  border-collapse: collapse;
+}
+
+#dataTable th,
+#dataTable td {
+  white-space: nowrap;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+#dataTable thead th {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: inherit;
+}
+
+.magic-card {
+  overflow-x: auto;
+}
+
+.magic-card > .overflow-x-auto {
+  overflow-x: auto;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+}
+
+#dataTable th:first-child,
+#dataTable td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 5;
+  background: rgb(111, 111, 111);
+  backdrop-filter: blur(6px);
+  padding: 0.5rem;
+}
+
+#dataTable thead th:first-child {
+  z-index: 7;
+}
+.chart-wrapper {
+  position: relative;
+  height: 400px; /* desktop default */
+  max-height: 600px;
+}
+
+@media (max-width: 768px) {
+  .chart-wrapper {
+    height: 300px; /* mobile-friendly height */
+  }
+}
+
+@media (max-width: 480px) {
+  .chart-wrapper {
+    height: 250px; /* very small screens */
+  }
+}
